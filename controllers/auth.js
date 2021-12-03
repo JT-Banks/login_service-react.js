@@ -1,7 +1,7 @@
 const mysql = require("mysql")
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs')
-
+const { promisify } = require('util')
 
 const userDB = mysql.createConnection({
     host: process.env.DATABASE_HOST,
@@ -55,12 +55,6 @@ exports.login = async (req, res) => {
 
 exports.register = (req, res) => {
     console.log(req.body)
-
-    // const name = req.body.name
-    // const email = req.body.email
-    // const password = req.body.password
-    // const passwordConfirm = req.body.passwordConfirm
-
     const { name, email, password, passwordConfirm } = req.body
 
     userDB.query('SELECT email FROM users WHERE email = ?', [email], async (error, result) => {
@@ -94,4 +88,40 @@ exports.register = (req, res) => {
 
     })
 
+}
+
+exports.isLoggedIn = async (req, res, next) => {
+    req.message = "Inside middleware"
+    //console.log(req.cookies)
+    if (req.cookies.jwt) {
+        try {
+            //Step 1: Verify Token
+            const decoded = await promisify(jwt.verify)
+                (req.cookies.jwt, process.env.JWT_SECRET)
+            console.log(decoded)
+
+            //Step 2: Check if user still exists
+
+            userDB.query('SELECT * FROM users WHERE id = ?', [decoded.id], (error, result) => {
+                console.log(result)
+                if (!result) {
+                    return next()
+                }
+                req.user = result[0]
+                return next()
+            })
+        }
+        catch (error) {
+            console.log(error)
+            return next()
+        }
+    } else { next() }
+}
+
+exports.logout = async (req, res) => {
+    res.cookie('jwt', 'logout', {
+        expires: new Date(Date.now() + 2 * 1000),
+        httpOnly: true
+    })
+    res.status(200).redirect('/')
 }

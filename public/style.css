@@ -24,6 +24,15 @@ nav li a {
 }
 
 nav li a:hover {
-    color: lightseagreen;
-    text-decoration: none;
+  color: lightseagreen;
+  text-decoration: none;
+}
+
+.avatar-ctn {
+  background-color: darkcyan;
+  text-align: center;
+}
+.avatar {
+  width: 65%;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
 }

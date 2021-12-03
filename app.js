@@ -3,8 +3,9 @@ const mysql = require("mysql")
 const app = express()
 const dotenv = require('dotenv')
 const path = require('path')
-dotenv.config({ path: './.env' })
 const cookieParser = require('cookie-parser')
+
+dotenv.config({ path: './.env' })
 
 const userDB = mysql.createConnection({
     host: process.env.DATABASE_HOST,
@@ -18,10 +19,12 @@ const publicDirectory = path.join(__dirname, './public')
 app.use(express.static(publicDirectory))
 
 app.use(express.urlencoded({ extended: false }))
+
 //parse JSON
 app.use(express.json())
 
-app.use(cookieParser)
+/* Somehow cookieParser locks up localhost... */
+app.use(cookieParser())
 
 app.set('view engine', 'hbs')
 
@@ -38,6 +41,6 @@ app.use('/', require('./routes/pages'))
 app.use('/auth', require('./routes/auth'))
 
 
-app.listen(5001, () => {
-    console.log("Server started on port 5001")
+app.listen(5005, () => {
+    console.log("Server started on port 5005")
 })
