@@ -23,7 +23,6 @@ app.use(express.urlencoded({ extended: false }))
 //parse JSON
 app.use(express.json())
 
-/* Somehow cookieParser locks up localhost... */
 app.use(cookieParser())
 
 app.set('view engine', 'hbs')
