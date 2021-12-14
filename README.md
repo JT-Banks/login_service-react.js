@@ -1,5 +1,5 @@
 # login_service-react.js
-![Demo Image](https://photos.app.goo.gl/XQXJeJmicCNyY38u6)
+![Demo Image](https://github.com/JT-Banks/login_service-react.js/blob/master/public/github_login_service.png)
 
 Steps to run locally: 
 
