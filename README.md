@@ -3,7 +3,8 @@
 How to install locally: 
 
 **Make sure you have the following applications installed and configured:**
-[***Xampp for Windows and Linux***](https://www.apachefriends.org/download.html)
+- [***Xampp for Windows and Linux***](https://www.apachefriends.org/download.html)
+- [***Mamp for Mac***](https://www.mamp.info/en/downloads/)
 
 Simple React application to provide the following features:
 - Login page
