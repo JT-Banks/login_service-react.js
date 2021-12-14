@@ -18,7 +18,6 @@ router.get('/login', (req, res) => {
 })
 
 router.get('/profile', authController.isLoggedIn, (req, res) => {
-    //console.log(req.message)
     if(req.user) {
         res.render('profile', { 
             user: req.user
