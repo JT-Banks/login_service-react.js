@@ -16,6 +16,7 @@ Simple React application to provide the following features:
 - Login page
 - Profile page
 - Register page
+- Cookies(Session token)
 
 Tech stack:
 - Xampp (MySQL, and Apache)
