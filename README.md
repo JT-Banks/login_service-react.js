@@ -9,6 +9,7 @@ Steps to run locally:
 2. In terminal in directory of login_service: ``npm install``
 3. Once installation is finished: ``npm start``
 4. In select browser: ``localhost:5005``
+5. .env file configuration: Database info, such as password, host, jwt cookie configs(this is meant to be private, up to you really)
 
 Simple React application to provide the following features:
 - Login page
