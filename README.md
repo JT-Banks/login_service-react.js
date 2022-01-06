@@ -28,4 +28,9 @@ Tech stack:
 
 ***Under construction***
 
-*Need to finish Profile page, things to add: Dynamic bio from user input, Dynamic profile image, more info fields, enable edits if user logged in == user profile page, enable profile page to go somewhere.*  
+*Need to finish Profile page, things to add:
+- Dynamic bio from user input 
+- Dynamic profile image
+- more info fields
+- enable edits if user logged in == user profile page
+- enable profile page to go somewhere.*  
